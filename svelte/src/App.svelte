@@ -1,7 +1,8 @@
 <script>
   import TodoItem from "./TodoItem.svelte";
 
-  let text = "abc";
+  let text =
+    "binding attributes from parent to children and change from children also possible";
 
   let todos = [
     {
@@ -41,7 +42,11 @@
   </ul>
 
   <div>
-    <input type="text" bind:value={newTodo} />
+    <input
+      type="text"
+      bind:value={newTodo}
+      on:keyup={(e) => e.key === "Enter" && createNewTodo()}
+    />
     <button on:click={() => createNewTodo()}>Add</button>
   </div>
 </main>
