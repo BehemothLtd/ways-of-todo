@@ -1,0 +1,20 @@
+{
+  "todos": [
+    {
+      "content": "Learn Svelte",
+      "done": true
+    },
+    {
+      "content": "Learn TypeScript",
+      "done": false
+    },
+    {
+      "content": "Learn Vue3",
+      "done": false
+    },
+    {
+      "content": "Learn React",
+      "done": false
+    }
+  ]
+}
