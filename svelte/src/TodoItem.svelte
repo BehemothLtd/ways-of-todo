@@ -1,6 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
+
   import { destroy } from "./apis/todos";
 
   export let item;
@@ -16,6 +17,8 @@
     dispatch("destroyed", { id: item.id });
   }
 </script>
+
+<input bind:value={text} />
 
 <li class="list-group-item {item.done ? 'bg-secondary' : ''}">
   {item.content}

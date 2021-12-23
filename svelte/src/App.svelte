@@ -5,6 +5,8 @@
   import TodoItem from "./TodoItem.svelte";
 
   let todos = [];
+  $: count = todos.filter((e) => e.done === false).length;
+  $: console.log(todos);
 
   let text =
     "binding attributes from parent to children and change from children also possible";
@@ -37,24 +39,25 @@
   }
 </script>
 
-<main>
-  <h1>Todo Svelte!</h1>
-  {text}
-  <ul class="list-group">
-    {#each todos as item}
-      <TodoItem {item} bind:text on:destroyed={deleteItem} />
-    {/each}
-  </ul>
+<h1>Todo Svelte!</h1>
+{text}
 
-  <div>
-    <input
-      type="text"
-      bind:value={newTodo}
-      on:keyup={(e) => e.key === "Enter" && createNewTodo()}
-    />
-    <button on:click={() => createNewTodo()}>Add</button>
-  </div>
-</main>
+<p>Count: {count}</p>
+
+<ul class="list-group">
+  {#each todos as item}
+    <TodoItem {item} bind:text on:destroyed={deleteItem} />
+  {/each}
+</ul>
+
+<div>
+  <input
+    type="text"
+    bind:value={newTodo}
+    on:keyup={(e) => e.key === "Enter" && createNewTodo()}
+  />
+  <button on:click={() => createNewTodo()}>Add</button>
+</div>
 
 <style>
   @import "https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css";
